@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
         primaryColor: baseColor,
       ),
       home: LevelSelectPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
