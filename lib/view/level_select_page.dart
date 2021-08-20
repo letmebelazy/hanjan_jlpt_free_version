@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hanjan_jlpt_free_version/globals.dart';
-import 'package:hanjan_jlpt_free_version/widget/level_list_tile.dart';
+import 'package:hanjan_jlpt_free_version/widget/level_page_custom_widget.dart';
 
 class LevelSelectPage extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class LevelSelectPage extends StatelessWidget {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: baseColor,
+        color: baseRed,
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

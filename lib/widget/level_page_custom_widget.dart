@@ -5,11 +5,11 @@ import 'package:hanjan_jlpt_free_version/controller/level_page_controller.dart';
 import 'package:hanjan_jlpt_free_version/globals.dart';
 
 class LevelListTile extends StatelessWidget {
-  final Map<int, int> lengthMap = {5: 400, 4: 800, 3: 1200};
-  final int level;
-  final LevelPageController controller = Get.put(LevelPageController());
+  final Map<int, int> _lengthMap = {5: 400, 4: 800, 3: 1200};
+  final int _level;
+  final LevelPageController _controller = Get.put(LevelPageController());
 
-  LevelListTile(this.level);
+  LevelListTile(this._level);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +17,10 @@ class LevelListTile extends StatelessWidget {
         builder: (_) {
           return InkWell(
             onTap: () {
-              _.selectLevel(level);
+              _.selectLevel(_level);
+              Get.toNamed('/part',arguments: _level);
             },
-            child: _.selectedLevel == level
+            child: _.selectedLevel == _level
             ? Container(
                 width: Get.width * 0.75,
                 height: Get.height * 0.07,
@@ -46,22 +47,22 @@ class LevelListTile extends StatelessWidget {
                       children: [
                         Padding(padding: const EdgeInsets.symmetric(horizontal: 20.0)),
                         Text(
-                          'N$level',
+                          'N$_level',
                           textScaleFactor: 3.0,
                           style: TextStyle(
-                              color: baseColor, fontWeight: FontWeight.w800),
+                              color: baseRed, fontWeight: FontWeight.w800),
                         ),
                         Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
                         CircleAvatar(
-                          backgroundColor: baseColor,
+                          backgroundColor: baseRed,
                           radius: Get.width * 0.01,
                         ),
                         Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
                         Text(
-                          lengthMap[level].toString(),
+                          _lengthMap[_level].toString(),
                           textScaleFactor: 2.0,
                           style: TextStyle(
-                              color: baseColor, fontWeight: FontWeight.w500),
+                              color: baseRed, fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
@@ -83,11 +84,11 @@ class LevelListTile extends StatelessWidget {
                         topLeft: Radius.circular(Get.height * 0.035),
                         bottomLeft: Radius.circular(Get.height * 0.035),
                       ),
-                      topSide: const BorderSide(color: Colors.white, width: 1.5),
-                      bottomSide: const BorderSide(color: Colors.white, width: 1.5),
-                      leftSide: const BorderSide(color: Colors.white, width: 1.5),
-                      topLeftCornerSide: const BorderSide(color: Colors.white, width: 1.5),
-                      bottomLeftCornerSide: const BorderSide(color: Colors.white, width: 1.5),
+                      topSide: levelBorderSide,
+                      bottomSide: levelBorderSide,
+                      leftSide: levelBorderSide,
+                      topLeftCornerSide: levelBorderSide,
+                      bottomLeftCornerSide: levelBorderSide,
                     )
                 ),
                 child: Row(
@@ -95,7 +96,7 @@ class LevelListTile extends StatelessWidget {
                   children: [
                     Padding(padding: const EdgeInsets.symmetric(horizontal: 20.0)),
                     Text(
-                      'N$level',
+                      'N$_level',
                       textScaleFactor: 3.0,
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w800),
@@ -107,7 +108,7 @@ class LevelListTile extends StatelessWidget {
                     ),
                     Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
                     Text(
-                      lengthMap[level].toString(),
+                      _lengthMap[_level].toString(),
                       textScaleFactor: 2.0,
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w500),
@@ -125,18 +126,14 @@ class DummyListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          showDialog(
-              context: context,
-              builder: (_) {
-                return AlertDialog(
-                  title: const Text('유료 버전 준비 중입니다.', textAlign: TextAlign.center,),
-                  content: TextButton(
-                    child: const Text('OK',
-                      style: const TextStyle(color: Colors.black45),),
-                    onPressed: () => Get.back(),
-                  ),
-                );
-              });
+          Get.defaultDialog(
+            title: '',
+            titlePadding: const EdgeInsets.all(0.0),
+            middleText: '유료 버전 준비 중입니다.',
+            buttonColor: Colors.transparent,
+            cancelTextColor: Colors.black45,
+            textCancel: '확인',
+          );
         },
         child: Container(
             alignment: Alignment.center,
@@ -148,12 +145,11 @@ class DummyListTile extends StatelessWidget {
                     topLeft: Radius.circular(Get.height * 0.035),
                     bottomLeft: Radius.circular(Get.height * 0.035),
                   ),
-                  topSide: const BorderSide(color: Colors.white, width: 1.5),
-                  bottomSide: const BorderSide(color: Colors.white, width: 1.5),
-                  leftSide: const BorderSide(color: Colors.white, width: 1.5),
-                  topLeftCornerSide: const BorderSide(color: Colors.white, width: 1.5),
-                  bottomLeftCornerSide: const BorderSide(color: Colors.white, width: 1.5),
-
+                  topSide: levelBorderSide,
+                  bottomSide: levelBorderSide,
+                  leftSide: levelBorderSide,
+                  topLeftCornerSide: levelBorderSide,
+                  bottomLeftCornerSide: levelBorderSide,
                 )
             ),
             child: Padding(
