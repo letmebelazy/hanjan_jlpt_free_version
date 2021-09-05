@@ -14,7 +14,15 @@ class PartSelectPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ViewSelector()
+          ViewSelector(),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (_, index) {
+                return PartListTile(_level, index);
+              }
+            ),
+          )
         ],
       ),
     );

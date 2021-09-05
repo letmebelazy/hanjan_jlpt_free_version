@@ -1,19 +1,19 @@
 import 'package:custom_rounded_rectangle_border/custom_rounded_rectangle_border.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hanjan_jlpt_free_version/controller/level_page_controller.dart';
+import 'package:hanjan_jlpt_free_version/controller/level_controller.dart';
 import 'package:hanjan_jlpt_free_version/globals.dart';
 
 class LevelListTile extends StatelessWidget {
   final Map<int, int> _lengthMap = {5: 400, 4: 800, 3: 1200};
   final int _level;
-  final LevelPageController _controller = Get.put(LevelPageController());
+  final LevelController _controller = Get.put(LevelController());
 
   LevelListTile(this._level);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LevelPageController>(
+    return GetBuilder<LevelController>(
         builder: (_) {
           return InkWell(
             onTap: () {

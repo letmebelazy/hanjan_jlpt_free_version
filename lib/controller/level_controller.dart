@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class LevelPageController extends GetxController {
+class LevelController extends GetxController {
   int selectedLevel = 5;
 
   void selectLevel(int level) {
