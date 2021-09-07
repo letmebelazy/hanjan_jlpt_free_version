@@ -6,13 +6,19 @@ enum PartView {
 }
 
 class PartController extends GetxController {
-  int level = 0;
+  static PartController get to => Get.find();
+
+  int part = 0;
   int counter = 0;
   PartView view = PartView.By100;
 
-  @override
-  void onInit() {
-    super.onInit();
-
+  void selectPart(int part) {
+    this.part = part;
+    update();
+  }
+  
+  void selectView(PartView view) {
+    this.view = view;
+    update();
   }
 }

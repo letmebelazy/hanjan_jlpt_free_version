@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 
 class LevelController extends GetxController {
-  int selectedLevel = 5;
+  int level = 5;
 
   void selectLevel(int level) {
-    selectedLevel = level;
+    this.level = level;
     update();
   }
 }

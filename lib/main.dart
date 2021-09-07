@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hanjan_jlpt_free_version/globals.dart';
+import 'package:hanjan_jlpt_free_version/view/card_page.dart';
 import 'package:hanjan_jlpt_free_version/view/level_select_page.dart';
 import 'package:hanjan_jlpt_free_version/view/part_select_page.dart';
 
@@ -16,10 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: baseRed,
       ),
-      home: LevelSelectPage(),
+      initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => LevelSelectPage()),
         GetPage(name: '/part', page: () => PartSelectPage()),
+        GetPage(name: '/card', page: () => CardPage())
       ],
       debugShowCheckedModeBanner: false,
     );

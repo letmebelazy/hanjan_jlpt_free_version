@@ -7,119 +7,119 @@ import 'package:hanjan_jlpt_free_version/globals.dart';
 class LevelListTile extends StatelessWidget {
   final Map<int, int> _lengthMap = {5: 400, 4: 800, 3: 1200};
   final int _level;
-  final LevelController _controller = Get.put(LevelController());
-
   LevelListTile(this._level);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<LevelController>(
-        builder: (_) {
-          return InkWell(
-            onTap: () {
-              _.selectLevel(_level);
-              Get.toNamed('/part',arguments: _level);
-            },
-            child: _.selectedLevel == _level
-            ? Container(
-                width: Get.width * 0.75,
-                height: Get.height * 0.07,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: const Radius.circular(50.0),
-                      bottomLeft: const Radius.circular(50.0),
-                    ),
-                    border: Border.all(color: Colors.white),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          spreadRadius: 5.0,
-                          blurRadius: 7.0,
-                          offset: const Offset(0, 3)
-                      )
-                    ]
+      init: LevelController(),
+      builder: (_) {
+        return InkWell(
+          onTap: () {
+            _.selectLevel(_level);
+            Get.toNamed('/part');
+          },
+          child: _level == _.level
+          ? Container(
+              width: Get.width * 0.75,
+              height: Get.height * 0.07,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(50.0),
+                  bottomLeft: const Radius.circular(50.0),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(padding: const EdgeInsets.symmetric(horizontal: 20.0)),
-                        Text(
-                          'N$_level',
-                          textScaleFactor: 3.0,
-                          style: TextStyle(
-                              color: baseRed, fontWeight: FontWeight.w800),
-                        ),
-                        Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
-                        CircleAvatar(
-                          backgroundColor: baseRed,
-                          radius: Get.width * 0.01,
-                        ),
-                        Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
-                        Text(
-                          _lengthMap[_level].toString(),
-                          textScaleFactor: 2.0,
-                          style: TextStyle(
-                              color: baseRed, fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: Icon(
-                        Icons.play_circle_filled,
-                        color: const Color.fromARGB(255, 214, 199, 184),
-                        size: 40.0,),
-                    ),
-                  ],
-                ))
-            : Container(
-                width: Get.width * 0.55,
-                height: Get.height * 0.07,
-                decoration: ShapeDecoration(
-                    shape: CustomRoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(Get.height * 0.035),
-                        bottomLeft: Radius.circular(Get.height * 0.035),
+                border: Border.all(color: Colors.white),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 5.0,
+                      blurRadius: 7.0,
+                      offset: const Offset(0, 3)
+                  )
+                ]
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Padding(padding: const EdgeInsets.symmetric(horizontal: 20.0)),
+                      Text(
+                        'N$_level',
+                        textScaleFactor: 3.0,
+                        style: TextStyle(
+                          color: baseRed, fontWeight: FontWeight.w800),
                       ),
-                      topSide: levelBorderSide,
-                      bottomSide: levelBorderSide,
-                      leftSide: levelBorderSide,
-                      topLeftCornerSide: levelBorderSide,
-                      bottomLeftCornerSide: levelBorderSide,
-                    )
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(padding: const EdgeInsets.symmetric(horizontal: 20.0)),
-                    Text(
-                      'N$_level',
-                      textScaleFactor: 3.0,
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w800),
-                    ),
-                    Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
-                    CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: Get.width * 0.01,
-                    ),
-                    Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
-                    Text(
-                      _lengthMap[_level].toString(),
-                      textScaleFactor: 2.0,
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w500),
-                    )
-                  ],
-                ))
-          );
-        });
+                      Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
+                      CircleAvatar(
+                        backgroundColor: baseRed,
+                        radius: Get.width * 0.01,
+                      ),
+                      Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
+                      Text(
+                        _lengthMap[_level].toString(),
+                        textScaleFactor: 2.0,
+                        style: TextStyle(
+                          color: baseRed, fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12.0),
+                    child: Icon(
+                      Icons.play_circle_filled,
+                      color: const Color.fromARGB(255, 214, 199, 184),
+                      size: 40.0,),
+                  ),
+                ],
+              ))
+          : Container(
+              width: Get.width * 0.55,
+              height: Get.height * 0.07,
+              decoration: ShapeDecoration(
+                shape: CustomRoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Get.height * 0.035),
+                    bottomLeft: Radius.circular(Get.height * 0.035),
+                  ),
+                  topSide: levelBorderSide,
+                  bottomSide: levelBorderSide,
+                  leftSide: levelBorderSide,
+                  topLeftCornerSide: levelBorderSide,
+                  bottomLeftCornerSide: levelBorderSide,
+                )
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(padding: const EdgeInsets.symmetric(horizontal: 20.0)),
+                  Text(
+                    'N$_level',
+                    textScaleFactor: 3.0,
+                    style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w800),
+                  ),
+                  Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: Get.width * 0.01,
+                  ),
+                  Padding(padding: const EdgeInsets.symmetric(horizontal: 8.0)),
+                  Text(
+                    _lengthMap[_level].toString(),
+                    textScaleFactor: 2.0,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w500),
+                  )
+                ],
+              )
+          )
+        );
+      }
+    );
   }
 }
-
 
 class DummyListTile extends StatelessWidget {
   @override
